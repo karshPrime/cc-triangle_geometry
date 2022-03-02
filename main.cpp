@@ -1,14 +1,12 @@
 #include <iostream>
+#inclde <cmath>;
 
 using std::cout;
 using std::endl;
 using std::cin;
 
-//double sin(int, int);
-//double cos(int, int);
-
 int main() {
-  cout << "Enter cordinates of your triangle: " << endl << "<separate with space>" << endl;
+  cout << "Enter coordinates of your triangle: " << endl << "<separate with space>" << endl;
 
   float cords[3][2];
   for (short int i = 0; i < 3; i++) {
