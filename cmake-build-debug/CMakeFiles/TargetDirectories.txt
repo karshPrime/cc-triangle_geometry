@@ -1,0 +1,3 @@
+C:/Users/system33/Development/LC1_Triangle_Geometry_main/cmake-build-debug/CMakeFiles/LC1_Triangle_Geometry_main.dir
+C:/Users/system33/Development/LC1_Triangle_Geometry_main/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/system33/Development/LC1_Triangle_Geometry_main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
