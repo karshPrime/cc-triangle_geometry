@@ -12,7 +12,7 @@ int main() {
 
   float cords[3][2];
   for (short i = 0; i < 3; i++) {
-    std::cout << "Point " << 'A' + i << ": ";
+    std::cout << "Point " << (char)(65+i) << ": ";
     std::cin >> cords[i][0];
     std::cin >> cords[i][1];
   }
@@ -115,14 +115,14 @@ std::string triangle_type(float angles[], float lengths[]) {
 // Print all calculated details
 void print_details(float angles[], float lengths[], const std::string& type) {
   std::cout << std::endl << "Details generated:" << std::endl;
+  std::cout << std::endl;
   std::cout << "Length AB: " << lengths[2] << "unit" << std::endl;
   std::cout << "Length BC: " << lengths[0] << "unit" << std::endl;
   std::cout << "Length CA: " << lengths[1] << "unit" << std::endl;
-
+  std::cout << std::endl;
   std::cout << "Angle <ABC: " << angles[1] << "\370" << std::endl;
   std::cout << "Angle <BCA: " << angles[2] << "\370" << std::endl;
   std::cout << "Angle <BAC: " << angles[0] << "\370" << std::endl;
-
-
-  std::cout << "∆ABC is a(n) " << type << " triangle." << std::endl;
+  std::cout << std::endl;
+  std::cout << "ABC is a(n) " << type << " triangle." << std::endl;
 }
