@@ -5,6 +5,7 @@ float get_length(float cord_a[], float cord_b[]);
 float get_angle(float side_a, float side_b, float side_c);
 std::string triangle_type(float angles[], float lengths[]);
 void print_details(float angles[], float lengths[], const std::string& type);
+bool is_triangle(float angles[]);
 
 int main() {
   std::cout << "Enter coordinates of your triangle: " << std::endl << "<separate with space>" << std::endl;
@@ -24,7 +25,6 @@ int main() {
   //       /________\
   //     B   side_c   A
 
-
   float line_length[3];
   line_length[0] = get_length(cords[1], cords[2]);
   line_length[1] = get_length(cords[2], cords[0]);
@@ -35,9 +35,12 @@ int main() {
   angles[1] = get_angle(line_length[0], line_length[2], line_length[1]);
   angles[2] = get_angle(line_length[0], line_length[1], line_length[2]);
 
-  std::string type = triangle_type(angles, line_length);
-
-  print_details(angles, line_length, type);
+  if (is_triangle(angles)) {
+    std::string type = triangle_type(angles, line_length);
+    print_details(angles, line_length, type);
+  } else {
+    std::cout << "Entered coordinates do not form a triangle." << std::endl;
+  }
 
   return 0;
 }
@@ -53,6 +56,16 @@ float get_angle(float side_a, float side_b, float side_c) {
   // cos(A) = (b2 + c2 - a2) / (2bc)
   float angle = std::acos((std::pow(side_a, 2) + std::pow(side_b, 2) - std::pow(side_c, 2)) / (2 * side_a * side_b));
   return ((angle * 180) / 3.1429);
+}
+
+// confirms if entered coordinates do form a triangle
+bool is_triangle(float angles[]) {
+  for (short i = 0; i < 3; i++) {
+    if (not std::isnormal(angles[i])){
+      return false;
+    }
+  }
+  return true;
 }
 
 // checks if either of the element in the list is over 90
