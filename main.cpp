@@ -4,6 +4,7 @@
 float get_length(float cord_a[], float cord_b[]);
 float get_angle(float side_a, float side_b, float side_c);
 std::string triangle_type(float angles[], float lengths[]);
+void print_details(float angles[], float lengths[], const std::string& type);
 
 int main() {
   std::cout << "Enter coordinates of your triangle: " << std::endl << "<separate with space>" << std::endl;
@@ -35,6 +36,8 @@ int main() {
   angles[2] = get_angle(line_length[0], line_length[1], line_length[2]);
 
   std::string type = triangle_type(angles, line_length);
+
+  print_details(angles, line_length, type);
 
   return 0;
 }
@@ -94,4 +97,19 @@ std::string triangle_type(float angles[], float lengths[]) {
     return "Scalene";
   }
   return "Acute"; // since the triangle isn't right-angled or obliqued
+}
+
+// Print all calculated details
+void print_details(float angles[], float lengths[], const std::string& type) {
+  std::cout << std::endl << "Details generated:" << std::endl;
+  std::cout << "Length AB: " << lengths[2] << "unit" << std::endl;
+  std::cout << "Length BC: " << lengths[0] << "unit" << std::endl;
+  std::cout << "Length CA: " << lengths[1] << "unit" << std::endl;
+
+  std::cout << "Angle <ABC: " << angles[1] << "\370" << std::endl;
+  std::cout << "Angle <BCA: " << angles[2] << "\370" << std::endl;
+  std::cout << "Angle <BAC: " << angles[0] << "\370" << std::endl;
+
+
+  std::cout << "∆ABC is a(n) " << type << " triangle." << std::endl;
 }
