@@ -3,6 +3,7 @@
 
 float get_length(float cord_a[], float cord_b[]);
 float get_angle(float side_a, float side_b, float side_c);
+std::string triangle_type(float angles[], float lengths[]);
 
 int main() {
   std::cout << "Enter coordinates of your triangle: " << std::endl << "<separate with space>" << std::endl;
@@ -33,6 +34,8 @@ int main() {
   angles[1] = get_angle(line_length[0], line_length[2], line_length[1]);
   angles[2] = get_angle(line_length[0], line_length[1], line_length[2]);
 
+  std::string type = triangle_type(angles, line_length);
+
   return 0;
 }
 
@@ -47,4 +50,48 @@ float get_angle(float side_a, float side_b, float side_c) {
   // cos(A) = (b2 + c2 - a2) / (2bc)
   float angle = std::acos((std::pow(side_a, 2) + std::pow(side_b, 2) - std::pow(side_c, 2)) / (2 * side_a * side_b));
   return ((angle * 180) / 3.1429);
+}
+
+// checks if either of the element in the list is over 90
+bool over_90(const float angles[]) {
+  for (short i = 0; i < 4; i++){
+    if (angles[i] > 90) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// checks if either of the element in the list is equal to 90
+bool any_90(const float angles[]) {
+  for (short i = 0; i < 3; i++) {
+    if (angles[i] == 90) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// compares all values in a list to see if either of them hold same value
+bool any_same(const float properties[]) {
+  if (properties[0] == properties[1] || properties[1] == properties[2] ||properties[2] == properties[0]) {
+    return true;
+  }
+  return false;
+}
+
+// Checks triangle type
+std::string triangle_type(float angles[], float lengths[]) {
+  if (over_90(angles)) {
+    return "Oblique";
+  } else if (any_90(angles)) {
+    return "Right-Angle";
+  } else if (angles[0] == angles[1] == angles[2]) {
+    return "Equilateral";
+  } else if (any_same(angles)) {
+    return "Isosceles";
+  } else if (any_same(lengths)) {
+    return "Scalene";
+  }
+  return "Acute"; // since the triangle isn't right-angled or obliqued
 }
